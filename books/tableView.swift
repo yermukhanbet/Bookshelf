@@ -10,37 +10,48 @@ import Foundation
 import UIKit
 
 class tableView: UITableViewController {
-    
     let cellId = "cellId123123"
-    var books = [String]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addNewBook))
         navigationItem.rightBarButtonItem?.tintColor = .black
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(reset))
+        navigationItem.leftBarButtonItem?.tintColor = .black
         navigationItem.title = "Books"
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        
         tableView.backgroundColor = .white
         navigationController?.navigationBar.barTintColor = .white
+        //print(type(of: books))
     }
     @objc func addNewBook(){
         let addBook = AddBook()
         addBook.saveArrayFromListViewController(booksFromListView: books)
+        print(type(of: books))
         present(addBook, animated: true, completion: nil)
+    }
+    @objc func reset(){
+        var indexPaths = [IndexPath]()
+        for row in books.indices{
+           print(row)
+            let indexPath = IndexPath(item: row, section: 0)
+            indexPaths.append(indexPath)
+        }
+        books.removeAll()
+        tableView.deleteRows(at: indexPaths, with: .fade)
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return books.count
     }
-    func copyBooksFromAddBookVC(booksFromAddBookVC: [String]){
+    func copyBooksFromAddBookVC(booksFromAddBookVC: [Book]){
         books = booksFromAddBookVC
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        
         let book = books[indexPath.row]
-        cell.textLabel?.text = book
-        
+        cell.textLabel?.text = book.nameOfBook! + " by " + book.nameOfAuthor!
         return cell
     }
     

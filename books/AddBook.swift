@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 
-//CHange the name of class VC
-var books = [String]()
+class Book {
+      var nameOfBook: String?
+      var nameOfAuthor: String?
+      var datePublished: String?
+      var information: String?
+  }
+var books = [Book]()
 class AddBook: UIViewController, UITextFieldDelegate{
     let saveButton: UIButton = {
         let button = UIButton(type: .system)
@@ -65,15 +70,17 @@ class AddBook: UIViewController, UITextFieldDelegate{
         print(textField.text!)
         saveButton.isEnabled = true
     }
-    func saveArrayFromListViewController(booksFromListView: [String]){
-        books = booksFromListView
+    func saveArrayFromListViewController(booksFromListView: [Book]){
+       books = booksFromListView
     }
     //MARK: save button action
     @objc func saveButtonAction() {
+        let newBook = Book()
+        newBook.nameOfBook = txtBookName.text!
+        newBook.nameOfAuthor = txtBookAuthor.text!
         view.endEditing(true)//hide keyboard
-        books.append(txtBookName.text! + " by " + txtBookAuthor.text!)
+        books.append(newBook)
         let list = tableView()
-        list.copyBooksFromAddBookVC(booksFromAddBookVC: books)
         let navCOntroller = UINavigationController(rootViewController: list)
         present(navCOntroller, animated: true, completion: nil)
     }

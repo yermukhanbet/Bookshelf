@@ -20,8 +20,7 @@ class tableView: UITableViewController {
         navigationItem.leftBarButtonItem?.tintColor = .black
         navigationItem.title = "Books"
         navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        
+        tableView.register(BookCell.self, forCellReuseIdentifier: cellId)
         tableView.backgroundColor = .white
         navigationController?.navigationBar.barTintColor = .white
         //print(type(of: books))
@@ -49,10 +48,23 @@ class tableView: UITableViewController {
         books = booksFromAddBookVC
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! BookCell
+        cell.linkToTableView = self
         let book = books[indexPath.row]
         cell.textLabel?.text = book.nameOfBook! + " by " + book.nameOfAuthor!
+        print(book.hasFavoured as Any)
+        cell.accessoryView?.tintColor = book.hasFavoured! ? UIColor.red : .lightGray
+        
         return cell
+    }
+    func someMethodToCall(cell: UITableViewCell){
+        let tappedCell = tableView.indexPath(for: cell)
+        let tappedBook = books[tappedCell!.row]
+        let hasFavourited = tappedBook.hasFavoured
+        tappedBook.hasFavoured = !hasFavourited!
+        print(tappedBook.hasFavoured!)
+        tableView.reloadRows(at: [tappedCell!], with: .fade)
+        
     }
     
 }

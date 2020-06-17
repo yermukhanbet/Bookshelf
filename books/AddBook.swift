@@ -10,17 +10,18 @@ import Foundation
 import UIKit
 
 class Book {
-      var nameOfBook: String?
-      var nameOfAuthor: String?
-      var datePublished: String?
-      var information: String?
+    var nameOfBook: String?
+    var nameOfAuthor: String?
+    var datePublished: String?
+    var information: String?
+    var hasFavoured: Bool?
   }
 var books = [Book]()
 class AddBook: UIViewController, UITextFieldDelegate{
     let saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Save", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(UIColor.darkText, for: .normal)
         button.backgroundColor = UIColor.white
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 5
@@ -78,6 +79,7 @@ class AddBook: UIViewController, UITextFieldDelegate{
         let newBook = Book()
         newBook.nameOfBook = txtBookName.text!
         newBook.nameOfAuthor = txtBookAuthor.text!
+        newBook.hasFavoured = false
         view.endEditing(true)//hide keyboard
         books.append(newBook)
         let list = tableView()

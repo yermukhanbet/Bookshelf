@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA3FBF992499D2EF00E401AD /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3FBF982499D2EF00E401AD /* BookCell.swift */; };
 		FA98705924520E06004ED6CB /* AddBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98705824520E06004ED6CB /* AddBook.swift */; };
 		FABFCF9724822C9800A2CEBF /* tableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABFCF9624822C9800A2CEBF /* tableView.swift */; };
 		FAD7F272244F686A009B08CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD7F271244F686A009B08CA /* AppDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA3FBF982499D2EF00E401AD /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		FA98705824520E06004ED6CB /* AddBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBook.swift; sourceTree = "<group>"; };
 		FABFCF9624822C9800A2CEBF /* tableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableView.swift; sourceTree = "<group>"; };
 		FAD7F26E244F686A009B08CA /* books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = books.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,7 @@
 				FAD7F27D244F686D009B08CA /* Info.plist */,
 				FA98705824520E06004ED6CB /* AddBook.swift */,
 				FABFCF9624822C9800A2CEBF /* tableView.swift */,
+				FA3FBF982499D2EF00E401AD /* BookCell.swift */,
 			);
 			path = books;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				FAD7F272244F686A009B08CA /* AppDelegate.swift in Sources */,
 				FA98705924520E06004ED6CB /* AddBook.swift in Sources */,
 				FABFCF9724822C9800A2CEBF /* tableView.swift in Sources */,
+				FA3FBF992499D2EF00E401AD /* BookCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
